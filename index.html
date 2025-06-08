@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farewell 2025 Poster</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #0a0a23;
+            font-family: 'Courier New', Courier, monospace;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Matrix-style background */
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        .title {
+            font-size: 3rem;
+            text-align: center;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            z-index: 2;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
+        }
+
+        .code-window {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff88;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5), inset 0 0 10px rgba(0, 255, 136, 0.3);
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        pre {
+            margin: 0;
+            color: #00ff88;
+            font-size: 1rem;
+            white-space: pre-wrap;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #00ccff;
+            text-shadow: 0 0 5px rgba(0, 204, 255, 0.7);
+            z-index: 2;
+        }
+
+        /* Syntax highlighting */
+        .keyword { color: #ff00ff; }
+        .string { color: #ffcc00; }
+        .comment { color: #888; }
+    </style>
+</head>
+<body>
+    <canvas id="matrix"></canvas>
+    <h1 class="title">Farewell 2025 – CSE Dept</h1>
+    <div class="code-window">
+        <pre>
+<span class="keyword">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+<span class="keyword">int</span> main() {
+    printf(<span class="string">"\n========================================\n"</span>);
+    printf(<span class="string">"       FAREWELL 2025 - CSE DEPT        \n"</span>);
+    printf(<span class="string">"========================================\n"</span>);
+    printf(<span class="string">"Date:  10th June 2025\n"</span>);
+    printf(<span class="string">"Venue: Seminar Hall, RK Block\n"</span>);
+    printf(<span class="string">"Tagline: A Final Byte with the Best Batch\n"</span>);
+    printf(<span class="string">"========================================\n"</span>);
+    <span class="keyword">return</span> 0;
+}
+        </pre>
+    </div>
+    <p class="tagline">"A Final Byte with the Best Batch"</p>
+
+    <script>
+        // Matrix effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+        const chars = '01';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#00ff88';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+                    drops[i] = 0;
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 33);
+    </script>
+</body>
+</html>
